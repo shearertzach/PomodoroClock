@@ -1,0 +1,143 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.287);
+}
+
+.clock {
+    width: 320px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    padding: 50px 20px;
+    border-radius: 7px;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.8), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+
+    .progress-radial {
+        display: inline-block;
+        position: relative;
+        font-size: 2.2em;
+        width: 6em;
+        padding-bottom: 6em;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff5f6d, #ffc371);
+        box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.295), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+        
+        .overlay {
+            position: absolute;
+            top: 3%;
+            bottom: 3%;
+            left: 3%;
+            right: 3%;
+            padding-top: 34%;
+            border-radius: 50%;
+            background: linear-gradient(to right, #dddbd7, #e0e0e0);
+            color: black;
+        }
+    }
+
+    .settings {
+        border-top: 1.5px solid #ff5f6d;
+        border-bottom: 1.5px solid #ff5f6d;
+
+        .time-session, .time-break {
+            display: inline-block;
+            padding: 20px;
+
+            h4 {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+
+            button {
+                color: black;
+                font-size: 20px;
+                background-color: transparent;
+                border: none;
+                border-radius: 2px;
+                width: 38px;
+                height: 30px;
+                outline: none;
+                transition: all 0.5s;
+
+                &:hover {
+                    background-color: #ffc371;
+                    color: rgb(36, 36, 36);
+                }
+            }
+        }
+    }
+    .controls {
+        padding-top: 40px;
+        padding-bottom: 10px;
+    
+        button {
+            color: rgb(46, 46, 46);
+            font-size: 15px;
+            background-color: transparent;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            width: 100px;
+            height: 40px;
+            outline: none;
+            transition: all 0.5s;
+    
+            &:hover {
+                background-color: #ff5f6d;
+            }
+        }
+    }
+}
+
+
+
+//Radial Setup
+
+$increment: 3.6; //This will be used to calculate the number of degrees the gradient should be angled by
+
+//For look in SASS
+@for $i from 0 through 100 {
+    //Making a CSS ruleset for .step-0 all the way through .step-100
+    .step-#{$i} {
+        //If/else statement in SASS
+        @if $i < 50 {
+            //Calcualte the angle for out gradient
+            $nextDeg: 90deg + ($increment * $i);
+            &.session {
+                background-image: linear-gradient(90deg, #202020 50%, transparent 50%, transparent),
+                linear-gradient($nextDeg, #ff5f6d 50%, #202020 50%, #202020)
+            }
+            &.break {
+                background-image: linear-gradient(90deg, #202020 50%, transparent 50%, transparent),
+                linear-gradient($nextDeg, #ffc371 50%, #202020 50%, #202020)
+            }
+        } @else {
+            $nextDeg: -90deg + ($increment * ($i - 50));
+            &.session {
+                background-image: linear-gradient($nextDeg, #ff5f6d 50%, transparent 50%, transparent), linear-gradient(270deg, #ff5f6d 50%, #202020 50%, #202020)
+            }
+            &.break {
+                background-image: linear-gradient(90deg, #ffc371 50%, transparent 50%, transparent), linear-gradient($nextDeg, #ffc371 50%, #202020 50%, #202020);
+            }
+        }
+    }
+}
