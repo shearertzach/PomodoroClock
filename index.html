@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Pomodoro Clock</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="clock">
+
+        <div class="timer">
+            <div class="progress-radial step-0 session">
+                <div class="main-display overlay">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="session-info">
+            <div class="session-count">
+
+            </div>
+        </div>
+
+
+        <div class="settings">
+            <div class="time-session">
+                <h4>Session Time</h4>
+                <p class="time-session-display"></p>
+                <button class="minus">-</button>
+                <button class="plus">+</button>
+            </div>
+            <div class="time-break">
+                <h4>Break Time</h4>
+                <p class="time-break-display"></p>
+                <button class="minus">-</button>
+                <button class="plus">+</button>
+            </div>
+        </div>
+
+
+        <div class="controls">
+            <button class="time-start">Start</button>
+            <button class="time-reset">Reset</button>
+        </div>
+    </div>
+
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
